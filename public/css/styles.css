@@ -1,0 +1,51 @@
+.container-main {
+    background-color:rgba(0, 0, 0, 0.0);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+    margin-bottom: 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1 );
+}
+
+body {
+    background-image: url('https://image-tc.galaxy.tf/wijpeg-a3l0rc5qpdmmn15tisfm23sv5/azalai-grand-hotel-pool.jpg?width=1920'); 
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center center; 
+    background-attachment: fixed; 
+}
+
+.card-title {
+    color: aliceblue;
+}
+
+.card-text {
+color: #dee2e6;
+}
+
+.card {
+    width: 33rem; 
+    height: 37rem;
+    background-color:rgba(0, 0, 0, 0.0)
+    
+}
+
+.button{
+    background-color: rgba(255, 255, 255, 0.4);
+    color: black;
+    border: 1px solid black;
+    padding: 10px 20px; 
+    text-decoration: none; 
+    display: inline-block;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 8%;
+}
+.button:hover{
+    background-color: black;
+    color: white;
+}

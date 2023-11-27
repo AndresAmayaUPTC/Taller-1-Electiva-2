@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%-include('templates/header') %>
+</head>
+
+<body>
+    <%-include('templates/navbar') %>
+        <div class="container mt-5">
+   
+            <div class="container-fluid mt-5">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="card text-center" style="width: 33rem; height: 37rem;background-color:rgba(0, 0, 0, 0.6);">
+                            <img src="https://puntacana-bavaro.com/wp-content/uploads/2023/06/recepcionista_hotel.jpg"
+                                class="card-img-top img-fluid" alt="Imagen de Compras" style="width: 33rem; height: 22rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Alquilar</h5>
+                                <p class="card-text">Asignar habitaciones a los huespedes o ver un registro de las habitaciones alquiladas
+                                </p>
+                                <div class="d-flex justify-content-center">
+                                    <button class="button" data-toggle="modal" data-target="#registrarCompraModal">
+                                        <span class="oi oi-cart"></span> Alquilar
+                                    </button>
+                                    <p class="card-text">ㅤㅤㅤㅤ</p>
+                                    <button class="button" data-toggle="modal" data-target="#verComprasModal">
+                                        <span class="oi oi-cart"></span> Listar Registro
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+       
+
+        <div class="modal" tabindex="-1" role="dialog" id="registrarCompraModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Alquilar Habitacion</h5>
+                        <button type="button" class="btn btn-danger" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="selectProducto">Habitacion</label>
+                                <select class="form-select" aria-label="Default select example" id="selectProducto">
+                                    <option selected>Seleccione la habitacion</option>
+
+                                    <% for (const [k, v] of product) { if (product.size> 0) { %>
+                                        <option value="<%= `${v.id}:${v.stock}` %>">
+                                            Numero: <%= v.id %>
+                                        </option>
+                                        <% } } %>
+                                </select>
+
+
+                                <label for="selectProveedor">Huesped</label>
+                                <select class="form-select" aria-label="Default select example" id="selectProveedor">
+                                    <option selected>Seleccione un huesped</option>
+
+                                    <% for (const [k, v] of supplier) { %>
+                                        <% if (supplier.size> 0) { %>
+                                            <option value="<%= v.id %>">
+                                                <%= v.name %>
+                                            </option>
+                                            <% } } %>
+                                </select>
+
+                                <label for="exampleFormControlInput1">Noches</label>
+                                <input type="number" class="form-control" id="Cantidad" placeholder="Ingrese la cantidad de noches">
+                                <label for="exampleFormControlInput1">Precio</label>
+                                <input type="number" class="form-control" id="Valor" placeholder="Precio por noche">
+
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary" onclick="savePurchase()">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal" tabindex="-1" role="dialog" id="verComprasModal">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Registro De Alquiler</h5>
+                        <button type="button" class="btn btn-danger close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>ID Alquiler</th>
+                                        <th>Fecha</th>
+                                        <th>Noches</th>
+                                        <th>Valor Total</th>
+                                        <th>Huesped</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% 
+                                    
+                                    if (sale.size > 0) {
+                                        for (const [k, v] of sale) {
+                                            if (v.type === 'purchase') { %>
+                                                <tr>
+                                                    <th><%= v.id %></th>
+                                                    <th><%= v.timestamp %></th>
+                                                    <th><%= v.quantity %></th>
+                                                    <th><%= v.price %></th>
+                                                    <th><%= getSupplierById(v.supplierId).name %></th>
+                                                    
+                                                </tr>
+                                    <% }}} else {%>
+                                        <tr>
+                                            <h2><td colspan="7">No hay Compras</td></h2>
+                                        </tr>
+                                    <% } %>
+                                </tbody>
+                                
+                            </table>
+                            
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <%-include('templates/scripts') %>
+</body>
+
+</html>

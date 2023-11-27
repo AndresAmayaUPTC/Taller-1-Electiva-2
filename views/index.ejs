@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <%-include('templates/header.ejs') %>
+</head>
+
+<body>
+
+    <%-include('templates/navbar.ejs') %>
+    
+    <div class="container-fluid mt-5 container-main">
+        <div class="d-flex align-items-center vh-90">
+            <div class="d-flex justify-content-between w-100">
+                        <div class="card" style=" background-color:rgba(0, 0, 0, 0.6);">
+                            <img src="https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2022/07/habitacion-hotel-2764541.jpg" class="card-img-top" alt="..." style="height: 15rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Habitaciones</h5>
+                                <p class="card-text">Gestiona las habitaciones del hotel</p>
+                          
+                                <a href="/products" class="button">Gestionar</a>
+                            </div>
+                        </div>
+
+                        <div class="card" style=" background-color:rgba(0, 0, 0, 0.6);" >
+                            <img src="https://cloudbeds-fcfc.kxcdn.com/wp-content/uploads/2020/01/istock-1061318342-1-e1671626433275.jpg" class="card-img-top" alt="..." style="height: 15rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Huespedes</h5>
+                                <p class="card-text">Gestiona la lista de huespedes del hotel</p>
+                                <br>
+                                <a href="/suppliers" class="button">Revisar</a>
+                            </div>
+                        </div>
+
+                    
+                        <div class="card" style=" background-color:rgba(0, 0, 0, 0.6);">
+                            <img src="https://puntacana-bavaro.com/wp-content/uploads/2023/06/recepcionista_hotel.jpg" class="card-img-top" alt="..." style="height: 15rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Alquilar</h5>
+                                <p class="card-text">Aca puedes registrar el alquiler de una habitacion</p>
+                                <a href="/sales" class="button">Alquilar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+        </div>
+
+        
+        <%-include('templates/scripts.ejs') %>
+</body>
+        
+</html>
